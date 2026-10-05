@@ -21,6 +21,11 @@ def load_to_staging():
     cursor = connection.cursor()
 
     try:
+        # Clear previous staging data
+        cursor.execute("TRUNCATE TABLE staging_customers")
+
+        print("Previous staging data cleared.")
+
         insert_query = """
             INSERT INTO staging_customers
             (
